@@ -22,49 +22,6 @@
 }
 
 /* --------------------------------------------- */
-.card {
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  overflow: hidden;
-  max-width: 360px;
-  margin: 20px auto;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #000000;
-  cursor: pointer;
-  transition: box-shadow 0.3s ease;
-
-  &:hover {
-    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-  }
-
-  .card-body {
-    padding: 20px;
-
-    .card-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .card-text {
-      font-size: 1rem;
-      line-height: 1.4;
-      margin-bottom: 10px;
-
-      & small.text-muted {
-        color: #888;
-        font-size: 0.85rem;
-      }
-    }
-  }
-
-  .card-img-bottom {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-}
 
 
 
@@ -83,7 +40,7 @@ ion-content {
 /* nav fijo con posición visual simulada */
 .bottom-nav {
   position: fixed;
-  bottom: 120px; /* subimos el nav */ /* va en 70 */
+  bottom: 70px; /* subimos el nav */ /* va en 70 */
   left: 0;
   right: 0;
   display: flex;
