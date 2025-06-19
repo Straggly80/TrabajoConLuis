@@ -1,0 +1,28 @@
+<ion-content style="--ion-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;">
+  <form (submit)="register(); $event.preventDefault()">
+    <ion-item>
+      <ion-label position="floating">Correo electrónico</ion-label>
+      <ion-input [(ngModel)]="email" name="email" type="email" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input [(ngModel)]="password" name="password" type="password" required></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" class="animated-button">Registrarse</ion-button>
+    <ion-button id="register-button" expand="block"(click)="goWelcome()">Inicio</ion-button>
+  </form>
+
+  <div *ngIf="showVerificationMessage && hasAttemptedRegister" @fadeIn style="margin-top: 20px;">
+    <p>Se envió un correo de verificación. Por favor revisa tu correo y confirma tu cuenta para poder iniciar sesión.</p>
+
+    <ion-button (click)="resendVerificationEmail()" color="secondary" expand="block" [disabled]="disableResend" class="animated-button">
+      Reenviar correo de verificación
+    </ion-button>
+
+    <ion-button (click)="checkVerification()" color="tertiary" expand="block" class="animated-button">
+      Ya verifiqué mi correo
+    </ion-button>
+  </div>
+</ion-content>

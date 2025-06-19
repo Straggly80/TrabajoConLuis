@@ -1,27 +1,186 @@
-#container {
-  text-align: center;
 
-  position: absolute;
+.title {
+  color: #619def; /* color1 */
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  text-align: start;
+  margin-top: 40px;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 50px;
+  font-weight: 900;
+}
+
+.letters {
+  color: #3e3e3e; /* letras blancas */
+  font-weight: 100; /* sin px */
+  font-family: 'Patrick Hand', cursive;
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  display: block;
+  width: 100%;
+}
+
+/* --------------------------------------------- */
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  max-width: 360px;
+  margin: 20px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #000000;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  }
+
+  .card-body {
+    padding: 20px;
+
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .card-text {
+      font-size: 1rem;
+      line-height: 1.4;
+      margin-bottom: 10px;
+
+      & small.text-muted {
+        color: #888;
+        font-size: 0.85rem;
+      }
+    }
+  }
+
+  .card-img-bottom {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+
+
+/* ------------------------------------------------------------------- */
+      //NAV BAR DE ABAJO
+/* ------------------------------------------------------------------- */
+ion-content {
+   --background: #f5f5f5; /* o el color que tú quieras para el fondo de toda la pantalla */
+  background-color: #f5f5f5;
+  --padding-bottom: 150px;
+  height: 100%;
+  overflow: hidden;
+}
+
+
+/* nav fijo con posición visual simulada */
+.bottom-nav {
+  position: fixed;
+  bottom: 120px; /* subimos el nav */ /* va en 70 */
   left: 0;
   right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  border-radius: 20px;
+  justify-content:center; /* centrado */
+  gap: 0;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
+/* Botón home a la izquierda */
+.home-box {
+  background-color: #ffffff;
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  color: rgb(103, 103, 103);
   text-decoration: none;
+  font-size: 1.2rem;
+  margin-right: 30px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.home-box ion-icon {
+  font-size: 1.9rem;
+    transition: transform 0.3s ease, color 0.4s ease;
+  
+}
+
+.home-box:hover {
+  transform: scale(1.10);
+}
+
+.home-box:hover ion-icon {
+  transform: scale(1.1);
+  color: #619def;
+}
+
+/* Contenedor para centrar la caja con 3 iconos */
+.right-box-container {
+  flex: 1; /* ocupa todo el espacio restante */
+  display: flex;
+  justify-content: center; /* centra horizontalmente el contenido */
+}
+
+/* Caja con los 3 iconos */
+.right-box {
+  background-color: #ffffff;
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;      /* menos redondeado para caja más pequeña */
+  padding: 5px 12px;        /* menos padding para reducir ancho */
+  display: flex;
+  gap: 22px;                /* menos espacio entre iconos */
+  align-items: center;
+  height: 50px;             /* más baja */
+  box-sizing: border-box;
+  overflow: visible;        /* que no corte el hover */
+}
+
+/* Iconos individuales con caja circular blanca */
+.right-box a {
+  background-color: #ffffff;
+  border-radius: 50%;
+  width: 40px;              /* iconos más pequeños */
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(103, 103, 103);
+  text-decoration: none;
+  font-size: 1.1rem;        /* un poco más pequeño */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transform-origin: center center;
+}
+
+.right-box a ion-icon {
+  font-size: 1.9rem;
+  transition: transform 0.3s ease, color 0.4s ease;
+}
+
+/* Hover: borde negro y escala suave */
+.right-box a:hover {
+  transform: scale(1.12);
+  color: #619def;
+}
+
+.home-box ion-icon,
+.right-box a ion-icon {
+  will-change: transform;
+  backface-visibility: hidden;
 }
