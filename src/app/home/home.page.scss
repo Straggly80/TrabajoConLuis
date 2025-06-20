@@ -1,36 +1,69 @@
 
-.title {
-  color: #619def; /* color1 */
-  font-size: clamp(1.8rem, 5vw, 3rem);
-  text-align: start;
-  margin-top: 40px;
-  font-family: 'Varela Round', sans-serif;
-  font-size: 50px;
-  font-weight: 900;
-}
-
+/* --------------------------------------------------------------------- */
+      //FONDO DE PANTALLA
 .letters {
   color: #3e3e3e; /* letras blancas */
   font-weight: 100; /* sin px */
   font-family: 'Patrick Hand', cursive;
   font-size: clamp(1rem, 4vw, 1.5rem);
-  text-align: justify;
+  text-align: center;
   overflow-wrap: break-word;
   word-wrap: break-word;
   display: block;
   width: 100%;
+  margin-top: 40px;
 }
 
-/* --------------------------------------------- */
+/* --------------------------------------------------------------------- */
+   //TARJETAS DE IONC-CARD
+/* --------------------------------------------------------------------- */
 
+
+.custom-card {
+  font-family: 'Patrick Hand', cursive;
+  margin: 16px auto; // Centrado horizontal
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  background: #ffffff;
+
+  // Limita el ancho y lo adapta
+  width: 100%;
+  max-width: 400px; // Puedes ajustar a 360px, 500px, etc.
+
+  ion-card-header {
+    background: #ffffff;
+    padding: 16px;
+
+    ion-card-title {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #333;
+    }
+  }
+
+  ion-card-content {
+    padding: 6px;
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    color: #555;
+  }
+
+  img {
+    width: 100%;
+    height: 300px;
+    display: block;
+    object-fit: cover;
+    border-top: 1px solid #ffffff;
+  }
+}
 
 
 /* ------------------------------------------------------------------- */
       //NAV BAR DE ABAJO
 /* ------------------------------------------------------------------- */
 ion-content {
-   --background: #f5f5f5; /* o el color que tú quieras para el fondo de toda la pantalla */
-  background-color: #f5f5f5;
+   --background: #ffffff; /* o el color que tú quieras para el fondo de toda la pantalla */
+  background-color: #ffffff;
   --padding-bottom: 150px;
   height: 100%;
   overflow: hidden;
