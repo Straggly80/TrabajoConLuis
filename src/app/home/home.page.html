@@ -1,3 +1,19 @@
+<!-- navbar arriba -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Productos</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleFavorito(products[0])" [disabled]="!products.length">
+        <ion-icon 
+          [name]="isFavorito(products[0]) ? 'heart' : 'heart-outline'" 
+          color="danger">
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<!-- contenido principal -->
 <ion-content class="ion-padding">
   <div *ngFor="let producto of products">
     <ion-card>
@@ -7,7 +23,7 @@
           <ion-button fill="clear" slot="end" (click)="toggleFavorito(producto)">
             <ion-icon 
               [name]="isFavorito(producto) ? 'heart' : 'heart-outline'" 
-               [style.color]="isFavorito(producto) ? 'red' : 'inherit'">
+              color="danger">
             </ion-icon>
           </ion-button>
         </ion-card-title>
@@ -20,6 +36,8 @@
     </ion-card>
   </div>
 </ion-content>
+
+<!-- barra de navegación inferior -->
 
 <div class="bottom-nav">
   <a href="javascript:void(0)" class="home-box">
