@@ -1,9 +1,3 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Favoritos</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -42,3 +36,21 @@
     </ion-card-content>
   </ion-card>
 </ion-content>
+
+<div class="bottom-nav">
+  <a href="javascript:void(0)" class="home-box" (click)="goBack()">
+    <ion-icon name="chevron-back-outline"></ion-icon>
+  </a>
+
+  <div class="right-box">
+    <a href="javascript:void(0)"><ion-icon name="search-outline"></ion-icon></a>
+
+    <a href="javascript:void(0)" (click)="goFavoritos()">
+      <ion-icon name="heart-outline"></ion-icon>
+    </a>
+
+    <a href="javascript:void(0)" (click)="goPerfil()" role="button" tabindex="0">
+      <ion-icon name="person-outline"></ion-icon>
+    </a>
+  </div>
+</div>

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FavoritesService, ProductoFavorito } from '../services/favorites.service';
 import { getAuth } from 'firebase/auth';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-favoritos',
@@ -16,6 +17,7 @@ export class FavoritosPage implements OnInit {
   favoritos: ProductoFavorito[] = [];
 
   constructor(
+    private navCtrl: NavController,
     private favoritesService: FavoritesService,
     private router: Router
   ) {}
@@ -41,6 +43,18 @@ export class FavoritosPage implements OnInit {
     this.favoritesService.eliminarFavorito(producto.id, uid);
     this.cargarFavoritos();
   }
+
+  goFavoritos() {
+    this.router.navigate(['/favoritos']);
+  }
+
+  goPerfil() {
+    this.router.navigate(['/perfil']);
+  }
+
+  goBack() {
+  this.navCtrl.back();
+}
 }
 //   if (!user) return;
 //     producto.usuarioId = user.uid; // Asignar el ID del usuario al producto

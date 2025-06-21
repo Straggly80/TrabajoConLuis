@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router'; // 👈 Necesario para leer parámetros
+import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
+
+
+
 
 @Component({
   selector: 'app-perfil',
@@ -12,7 +17,12 @@ import { ActivatedRoute } from '@angular/router'; // 👈 Necesario para leer pa
 export class PerfilPage implements OnInit {
   usuarioId: string | null = null;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+  private navCtrl: NavController,
+  private route: ActivatedRoute,
+  private router: Router
+) {}
+
 
   ngOnInit() {
     // Leer el parámetro :id de la URL
@@ -25,4 +35,16 @@ export class PerfilPage implements OnInit {
     // Ejemplo:
     // this.cargarProductosDeUsuario(this.usuarioId);
   }
+
+  goFavoritos() {
+    this.router.navigate(['/favoritos']);
+  }
+
+  goPerfil() {
+    this.router.navigate(['/perfil']);
+  }
+
+  goBack() {
+  this.navCtrl.back();
+}
 }
