@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Favoritos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Favoritos</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Mis favoritos</ion-card-title>
+      <ion-card-subtitle>Publicaciones guardadas</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item
+          *ngFor="let producto of favoritos"
+          lines="full"
+          (click)="irAlPerfil(producto.usuarioId)"
+          style="cursor: pointer"
+        >
+          <ion-thumbnail slot="start">
+            <img [src]="producto.img" alt="{{ producto.name }}" />
+          </ion-thumbnail>
+          <ion-label>
+            <h2>{{ producto.name }}</h2>
+            <p>{{ producto.descripcion }}</p>
+            <p><small>{{ producto.price }}</small></p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+
+      <p *ngIf="favoritos.length === 0" style="text-align:center; margin-top: 1rem;">
+        No tienes favoritos guardados.
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

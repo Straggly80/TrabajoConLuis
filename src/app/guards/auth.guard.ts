@@ -1,34 +1,29 @@
 import { Injectable } from '@angular/core';
-import {
-  CanActivate,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot,
-  UrlTree,
-  Router
-} from '@angular/router';
+import { CanActivate, Router, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Auth } from '@angular/fire/auth';
-import { onAuthStateChanged } from 'firebase/auth';
+import { map, take } from 'rxjs/operators';
+import { AuthStateService } from '../services/auth-state.service'; // ajusta la ruta según tu estructura
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
+  constructor(
+    private authStateService: AuthStateService,
+    private router: Router
+  ) {}
 
-  constructor(private auth: Auth, private router: Router) {}
-
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Promise<boolean | UrlTree> {
-    return new Promise((resolve) => {
-      onAuthStateChanged(this.auth, (user) => {
+  canActivate(): Observable<boolean | UrlTree> {
+    return this.authStateService.getUser().pipe(
+      take(1), // solo espera el primer valor emitido
+      map(user => {
         if (user && user.emailVerified) {
-          resolve(true);
-        } else {
-          resolve(this.router.createUrlTree(['/login']));
+          return true;
         }
-      });
-    });
+        return this.router.createUrlTree(['/login']);
+      })
+    );
   }
 }
+// Este guardia verifica si el usuario está autenticado y tiene su correo verificado.
+// Si no está autenticado o el correo no está verificado, redirige a la página de login.
