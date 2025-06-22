@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
   imports: [IonicModule, CommonModule, FormsModule],
 })
 export class LoginPage {
+  showRightBox = false;
   email: string = '';
   password: string = '';
 
@@ -22,6 +23,10 @@ export class LoginPage {
         this.router.navigate(['/home']);
       }
     });
+  }
+
+  toggleRightBox() {
+    this.showRightBox = !this.showRightBox;
   }
 
   goRegister() {

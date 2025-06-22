@@ -41,6 +41,12 @@ const routes: Routes = [
       import('./perfil/perfil.module').then(m => m.PerfilPageModule),
     canActivate: [AuthGuard],
   },
+  {
+    path: 'crear',
+    loadChildren: () => import('./crear/crear.module').then( m => m.CrearPageModule),
+    canActivate: [AuthGuard],
+  },
+
 ];
 
 @NgModule({

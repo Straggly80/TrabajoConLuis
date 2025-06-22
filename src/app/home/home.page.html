@@ -1,50 +1,33 @@
-<!-- navbar arriba -->
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Productos</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="toggleFavorito(products[0])" [disabled]="!products.length">
-        <ion-icon 
-          [name]="isFavorito(products[0]) ? 'heart' : 'heart-outline'" 
-          color="danger">
-        </ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<ion-content fullscreen>
+  <div class="map-container">
+    <!-- Mapa -->
+    <div id="map"></div>
 
-<!-- contenido principal -->
-<ion-content class="ion-padding">
-  <div *ngFor="let producto of products">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>
-          {{ producto.name }}
-          <ion-button fill="clear" slot="end" (click)="toggleFavorito(producto)">
-            <ion-icon 
-              [name]="isFavorito(producto) ? 'heart' : 'heart-outline'" 
-              color="danger">
-            </ion-icon>
-          </ion-button>
-        </ion-card-title>
-        <ion-card-subtitle>{{ producto.price }}</ion-card-subtitle>
-      </ion-card-header>
-      <ion-card-content>
-        {{ producto.descripcion || '' }}
-      </ion-card-content>
-      <img [src]="producto.img" alt="{{ producto.name }}" />
-    </ion-card>
+    <!-- Botón de corazón sobre el mapa -->
+    <ion-button fill="clear" class="heart-btn" (click)="toggleFavorito(products[0])" [disabled]="!products.length">
+      <ion-icon 
+        [name]="isFavorito(products[0]) ? 'heart' : 'heart-outline'" 
+        color="danger">
+      </ion-icon>
+    </ion-button>
   </div>
 </ion-content>
 
-<!-- barra de navegación inferior -->
 
+
+<!-- Navegación inferior -->
 <div class="bottom-nav">
-  <a href="javascript:void(0)" class="home-box">
-    <ion-icon name="chevron-back-outline"></ion-icon>
+ 
+    <!-- Botón para ir a la página de crear publicaciones -->
+    <a href="javascript:void(0)" class="crear-boton" (click)="goCrear()">
+      <ion-icon name="add-circle-outline"></ion-icon>
+    </a>
+
+  <a href="javascript:void(0)" class="home-box" (click)="toggleRightBox()">
+    <ion-icon [name]="showRightBox ? 'chevron-forward-outline' : 'chevron-back-outline'"></ion-icon>
   </a>
 
-  <div class="right-box">
+  <div class="right-box" [class.hidden]="!showRightBox" [class.visible]="showRightBox">
     <a href="javascript:void(0)"><ion-icon name="search-outline"></ion-icon></a>
 
     <a href="javascript:void(0)" (click)="goFavoritos()">
@@ -54,5 +37,9 @@
     <a href="javascript:void(0)" (click)="goPerfil()" role="button" tabindex="0">
       <ion-icon name="person-outline"></ion-icon>
     </a>
+
   </div>
 </div>
+
+
+

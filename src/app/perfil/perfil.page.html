@@ -1,41 +1,30 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <h1 class="title">Welcome!</h1>
     </ion-toolbar>
   </ion-header>
-  <div>
-    <ion-title>
-      NOMBRE DE USUARIO
-    </ion-title>
-  </div>
-  <div>
-    <ion-title>
-      Publicaciones
-    </ion-title>
-  </div>
 </ion-content>
 
 
 
+<!-- Navegación inferior -->
 <div class="bottom-nav">
-  <a href="javascript:void(0)" class="home-box" (click)="goBack()">
-    <ion-icon name="chevron-back-outline"></ion-icon>
+  <a href="javascript:void(0)" class="home-box" (click)="toggleRightBox()">
+    <ion-icon [name]="showRightBox ? 'chevron-forward-outline' : 'chevron-back-outline'"></ion-icon>
   </a>
 
-  <div class="right-box">
-    <a href="javascript:void(0)"><ion-icon name="search-outline"></ion-icon></a>
+  <div class="right-box" [class.hidden]="!showRightBox" [class.visible]="showRightBox">
+    <a href="javascript:void(0)" (click)="goHome()"><ion-icon name="home"></ion-icon></a>
 
     <a href="javascript:void(0)" (click)="goFavoritos()">
       <ion-icon name="heart-outline"></ion-icon>
     </a>
 
-    <a href="javascript:void(0)" (click)="goPerfil()" role="button" tabindex="0">
-      <ion-icon name="person-outline"></ion-icon>
+   <!-- Botón logout -->
+    <a href="javascript:void(0)" (click)="backlogout()" role="button" tabindex="0">
+      <ion-icon name="log-out-outline"></ion-icon>
     </a>
   </div>
 </div>
 
-
-
-
+   

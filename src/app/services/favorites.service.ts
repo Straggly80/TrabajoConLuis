@@ -7,6 +7,8 @@ export interface ProductoFavorito {
   img: string;
   descripcion: string;
   usuarioId: string; // obligatorio para identificar usuario
+  lat?: number;   // <-- Agrega estas dos
+  lng?: number;
 }
 
 @Injectable({

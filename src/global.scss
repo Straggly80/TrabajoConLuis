@@ -1,11 +1,5 @@
-/* ===== FUENTE PERSONALIZADA ===== */
-@font-face {
-  font-family: 'HowdyBun';
-  src: url('/assets/fonts/HowdyBun.otf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
+// Global styles for the Ionic app
+// Importing core CSS from Ionic framework
 /*
  * App Global CSS limpio sin paleta obsoleta
  */
@@ -28,13 +22,6 @@
 /*
  * App Global CSS limpio sin paleta obsoleta
  */
-
-/* Core CSS Ionic */
-@import "@ionic/angular/css/core.css";
-@import "@ionic/angular/css/normalize.css";
-@import "@ionic/angular/css/structure.css";
-@import "@ionic/angular/css/typography.css";
-@import "@ionic/angular/css/display.css";
 
 /* Utilidades opcionales */
 @import "@ionic/angular/css/padding.css";
@@ -48,14 +35,15 @@
   -webkit-tap-highlight-color: transparent !important;
   -webkit-touch-callout: none !important;
   user-select: none;
+  /* background-color: transparent !important; //especifico para evitar el fondo blanco en los botones */
 }
+
 
 /* Quitar margen y padding global para html y body, fondo blanco */
 html, body {
   margin: 0;
   padding: 0;
   height: 100vh;
-  background-color: #619def; /* tu color fijo */
   overflow-x: hidden;
 }
 

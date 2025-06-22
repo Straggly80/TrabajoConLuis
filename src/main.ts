@@ -29,6 +29,6 @@ bootstrapApplication(AppComponent, {
 }).then(() => {
   // 💡 Aquí configuramos la StatusBar cuando la app arranca
   StatusBar.setOverlaysWebView({ overlay: true }); // Deja pasar la imagen por detrás
-  StatusBar.setBackgroundColor({ color: 'transparent' }); // Fondo transparente
+  StatusBar.setBackgroundColor({ color: 'white' }); // Fondo transparente
   StatusBar.setStyle({ style: Style.Light }); // Letras blancas
 });
