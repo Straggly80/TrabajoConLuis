@@ -121,7 +121,7 @@ ion-content {
 .bottom-nav {
   position: fixed;
   top: 16px;
-  right: 16px; /* valor oculto por defecto */
+  right: 15px; /* valor oculto por defecto */
   z-index: 10;
   display: flex;
   align-items: center;
@@ -189,7 +189,7 @@ ion-content {
 /* Menú justo debajo */
 .right-box {
   position: absolute;
-  top: 60px; /* debajo del botón */
+  top: 70px; /* debajo del botón */
   right: 0;
   background-color: #ffffff;
   box-shadow: 0 0px 5px rgba(0, 0, 0, 0.25);
@@ -209,7 +209,7 @@ ion-content {
 .right-box a {
   background-color: #ffffff;
   border-radius: 50%;
-  width: 40px;
+  width: 32px;
   height: 40px;
   display: flex;
   align-items: center;

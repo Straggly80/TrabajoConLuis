@@ -1,3 +1,10 @@
+/* ---------- fuente de letras ---------- */
+
+* {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+}
+
 .title {
   color: #000000; /* color1 */
   font-size: clamp(1.8rem, 5vw, 3rem);
@@ -8,6 +15,38 @@
   font-size: 70px;
   font-weight: 400;
 }
+
+.perfil-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.perfil-superior,
+.perfil-inferior {
+  flex: 1;
+  overflow: auto;
+}
+
+.perfil-avatar {
+  margin: 0 auto 12px;
+  width: 100px;
+  height: 100px;
+}
+
+.perfil-card h2 {
+  margin-top: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.perfil-inferior {
+  padding-top: 10px;
+  background-color: #f4f5f8;
+  border-top: 1px solid #ccc;
+}
+
+
 
 /* ------------------------------------------------------------------- */
       //NAV BAR DE ABAJO

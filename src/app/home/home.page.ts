@@ -15,8 +15,7 @@ declare const google: any;
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit, AfterViewInit {
-showRightBox = false;
-  // Datos de ejemplo para productos
+  showRightBox = false;
 
   products: ProductoFavorito[] = [
     {
@@ -111,83 +110,65 @@ showRightBox = false;
     });
   }
 
-  initMap() {
-    if (!this.products.length) return;
+  async getCurrentLocation(): Promise<{ lat: number; lng: number }> {
+    return new Promise((resolve) => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            resolve({
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            });
+          },
+          (error) => {
+            console.warn('Geolocation failed:', error.message);
+            resolve({ lat: 19.4326, lng: -99.1332 }); // CDMX por defecto
+          }
+        );
+      } else {
+        console.warn('Geolocation is not supported by this browser.');
+        resolve({ lat: 19.4326, lng: -99.1332 });
+      }
+    });
+  }
 
-    const center = new google.maps.LatLng(this.products[0].lat, this.products[0].lng);
+  async initMap() {
+    const userLocation = await this.getCurrentLocation();
     const mapDiv = document.getElementById('map');
+    if (!mapDiv) return;
 
     const map = new google.maps.Map(mapDiv, {
-      center,
-      zoom: 10,
+      center: userLocation,
+      zoom: 14,
       disableDefaultUI: true,
       clickableIcons: false,
       mapTypeId: 'roadmap',
       styles: [
-        {
-          featureType: 'poi',
-          elementType: 'all',
-          stylers: [{ visibility: 'off' }]
-        },
-        {
-          featureType: 'poi.park',
-          elementType: 'all',
-          stylers: [{ visibility: 'off' }]
-        },
-        {
-          featureType: 'poi.attraction',
-          elementType: 'all',
-          stylers: [{ visibility: 'off' }]
-        },
-        {
-          featureType: 'poi.business',
-          elementType: 'all',
-          stylers: [{ visibility: 'off' }]
-        },
-        {
-          featureType: 'poi.place_of_worship',
-          elementType: 'all',
-          stylers: [{ visibility: 'off' }]
-        },
-        {
-          featureType: 'poi.school',
-          elementType: 'all',
-          stylers: [{ visibility: 'off' }]
-        },
-        {
-          featureType: 'poi.medical',
-          elementType: 'all',
-          stylers: [{ visibility: 'off' }]
-        },
-        {
-          featureType: 'transit',
-          elementType: 'all',
-          stylers: [{ visibility: 'off' }]
-        },
-        {
-          featureType: 'road',
-          elementType: 'geometry',
-          stylers: [{ visibility: 'simplified' }]
-        },
-        {
-          featureType: 'road',
-          elementType: 'labels.icon',
-          stylers: [{ visibility: 'off' }]
-        },
-        {
-          featureType: 'administrative',
-          elementType: 'labels',
-          stylers: [{ visibility: 'off' }]
-        },
-        {
-          featureType: 'water',
-          elementType: 'labels',
-          stylers: [{ visibility: 'off' }]
-        }
+        { featureType: 'poi', elementType: 'all', stylers: [{ visibility: 'off' }] },
+        { featureType: 'transit', elementType: 'all', stylers: [{ visibility: 'off' }] },
+        { featureType: 'road', elementType: 'geometry', stylers: [{ visibility: 'simplified' }] },
+        { featureType: 'road', elementType: 'labels.icon', stylers: [{ visibility: 'off' }] },
+        { featureType: 'administrative', elementType: 'labels', stylers: [{ visibility: 'off' }] },
+        { featureType: 'water', elementType: 'labels', stylers: [{ visibility: 'off' }] }
       ]
+    });
 
-   });
+    // Marca tu ubicación actual
+    new google.maps.Marker({
+      position: userLocation,
+      map,
+      title: 'Tu ubicación',
+      icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        scale: 7,
+        fillColor: '#4285F4',
+        fillOpacity: 1,
+        strokeWeight: 2,
+        strokeColor: '#ffffff'
+      }
+    });
 
+    // Marcadores de productos
     this.products.forEach(producto => {
       new google.maps.Marker({
         position: { lat: producto.lat, lng: producto.lng },
@@ -196,13 +177,11 @@ showRightBox = false;
       });
     });
 
-    // 🔧 Solución al "mapa se mueve de lugar":
     setTimeout(() => {
       google.maps.event.trigger(map, 'resize');
-      map.setCenter(center);
+      map.setCenter(userLocation);
     }, 500);
   }
-
 
   goToProduct(producto: ProductoFavorito) {
     this.router.navigate(['/product', producto.id]);
@@ -219,5 +198,4 @@ showRightBox = false;
   goCrear() {
     this.router.navigate(['/crear']);
   }
-
 }
