@@ -1,9 +1,10 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { FavoritesService, ProductoFavorito } from '../services/favorites.service';
 import { Auth } from '@angular/fire/auth';
+import { filter } from 'rxjs/operators';
 
 declare const google: any;
 
@@ -16,6 +17,7 @@ declare const google: any;
 })
 export class HomePage implements OnInit, AfterViewInit {
   showRightBox = false;
+  rightBoxTimer: any;
 
   products: ProductoFavorito[] = [
     {
@@ -50,11 +52,38 @@ export class HomePage implements OnInit, AfterViewInit {
   ) {}
 
   toggleRightBox() {
+    // Invertir estado
     this.showRightBox = !this.showRightBox;
+
+    // Limpiar temporizador anterior
+    if (this.rightBoxTimer) {
+      clearTimeout(this.rightBoxTimer);
+    }
+
+    // Si se abrió, iniciar temporizador de autocierre
+    if (this.showRightBox) {
+      this.rightBoxTimer = setTimeout(() => {
+        this.showRightBox = false;
+      }, 5000);
+    }
+  }
+
+  cerrarRightBox() {
+    this.showRightBox = false;
+    clearTimeout(this.rightBoxTimer);
   }
 
   ngOnInit() {
-    this.cargarFavoritos();
+    // Detectar navegación hacia esta página (opcional, para limpieza)
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: any) => {
+      if (event.url === '/home') {
+        this.showRightBox = false;
+        clearTimeout(this.rightBoxTimer);
+        this.cargarFavoritos();
+      }
+    });
   }
 
   ngAfterViewInit() {

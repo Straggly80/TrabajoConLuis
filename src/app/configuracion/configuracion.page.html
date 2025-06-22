@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Configuración</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-list>
+    <ion-item>
+      <ion-label>Informacion personal</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Informacion de la cuenta</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Articulos comprados</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Articulos vendidos</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<!-- Navegación inferior -->
+<div class="bottom-nav">
+
+  <a href="javascript:void(0)" class="home-box" (click)="toggleRightBox()">
+    <ion-icon [name]="showRightBox ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
+  </a>
+
+  <div class="right-box" [class.hidden]="!showRightBox" [class.visible]="showRightBox">
+    <a href="javascript:void(0)"><ion-icon name="search-outline"></ion-icon></a>
+
+    <a href="javascript:void(0)" (click)="goFavoritos()">
+      <ion-icon name="heart-outline"></ion-icon>
+    </a>
+
+    <a href="javascript:void(0)" (click)="goBack()" role="button" tabindex="0">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </a>
+
+  </div>
+</div>
