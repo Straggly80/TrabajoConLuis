@@ -7,6 +7,7 @@ import { FavoritosPage } from './favoritos/favoritos.page';
 import { PerfilPage } from './perfil/perfil.page';
 import { CrearPage } from './crear/crear.page';
 import { ConfiguracionPage } from './configuracion/configuracion.page';
+import { BlackPage } from './black/black.page';
 // Importamos las páginas que vamos a usar en las rutas
 
 export const routes: Routes = [
@@ -18,4 +19,6 @@ export const routes: Routes = [
   { path: 'perfil', component: PerfilPage },
   { path: 'crear', component: CrearPage },
   { path: 'configuracion', component: ConfiguracionPage },
+  { path: 'black', component: BlackPage },
+  
 ];

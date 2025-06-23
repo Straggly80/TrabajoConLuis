@@ -1,4 +1,4 @@
-/* ---------- fuente de letras ---------- */
+/* ---------- FUENTE DE LETRAS ---------- */
 
 * {
   font-family: 'Montserrat', sans-serif;
@@ -6,60 +6,45 @@
 /*   background-color: #2a2a2a; */ /* MANTENER ESTOS COLORES CALIDOS */
 }
 
-/* --------------------------------------- */
-.letras{
-  color: #2a2a2a; /* letras blancas */
-  font-weight: 100; /* sin px */
-  font-family: 'Patrick Hand', cursive;
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  text-align: justify;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  display: block;
-  width: 100%;
-  margin-top: 5px;
-}
-
-.title {
-  color: #000000; /* color1 */
-  font-size: clamp(1.8rem, 5vw, 3rem);
-  text-align: center;
-  margin-top: 35px;
-  margin-left: auto;
-  font-family: 'Coolvetica', sans-serif;
-  font-size: 70px;
-  font-weight: 400;
-}
-
-.perfil-container {
-  display: flex;
-  flex-direction: column;
-  height: 640px;
-  
-}
-
-.perfil-superior,
-.perfil-inferior {
-  flex: 1;
-  overflow: auto;
-}
-
+/* ---------------IMAGEN DEL USUARIO------------------------ */ 
 .perfil-avatar {
   margin: 0 auto 12px;
   width: 150px;
   height: 150px;
 }
 
-.perfil-card h2 {
-  margin-top: 0;
-  font-size: 1.4rem;
-  font-weight: 600;
+/* --------------LETRAS DEBAJO DEL USUARIO------------------------- */
+.letras{
+  color: #2a2a2a; /* letras blancas */
+  font-weight: 100; /* sin px */
+  font-family: 'Patrick Hand', cursive;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  text-align: center;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+}
+/* -----------------IMG DE ABAJO TIPO PINTEREST---------------------------------- */
+
+.perfil-img {
+  background-color: #e25f5f;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 4px 2px 5px rgb(119, 119, 119);
 }
 
-.perfil-inferior {
-  background-color: #ff0000;
+.perfil-card{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* 
 .img-pub{
   width: 100%;
   height: 100%;
@@ -67,7 +52,7 @@
   border-radius: 15px;
   box-shadow: 4px 2px 5px rgb(119, 119, 119);
 }
-
+ */
 
 /* ------------------------------------------------------------------- */
       //NAV BAR DE ABAJO
@@ -92,6 +77,7 @@ ion-content {
   gap: 12px;
   justify-content: flex-end;
   transition: right 0.3s ease; /* animación suave */
+  color: rgb(103, 103, 103);
 }
 
 /* Botón fijo */
@@ -169,7 +155,7 @@ ion-content {
 /* Hover: borde negro y escala suave */
 .right-box a:hover {
   transform: scale(1.12);
-  color: #ef6161;
+  color: #008cff;
 }
 
 .home-box ion-icon,

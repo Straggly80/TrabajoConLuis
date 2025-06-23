@@ -6,6 +6,7 @@ import { Auth } from '@angular/fire/auth';
 import { filter } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 
+
 @Component({
   selector: 'app-perfil',
   standalone: true,
@@ -17,6 +18,7 @@ export class PerfilPage implements OnInit {
   usuarioId: string | null = null;
   showRightBox = false;
   rightBoxTimer: any;
+  
 
   constructor(
     private navCtrl: NavController,
@@ -35,6 +37,13 @@ export class PerfilPage implements OnInit {
     ).subscribe((event: any) => {
     });
   }
+
+/*   ionViewWillEnter() {
+    // Reiniciar el temporizador al entrar en la vista
+    this.resetRightBoxTimer();
+  } */
+
+  
 
   toggleRightBox() {
     this.showRightBox = !this.showRightBox;

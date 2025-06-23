@@ -45,9 +45,14 @@ const routes: Routes = [
     path: 'crear',
     loadChildren: () => import('./crear/crear.module').then( m => m.CrearPageModule),
     canActivate: [AuthGuard],
-  },  {
+  },
+  {
     path: 'configuracion',
     loadChildren: () => import('./configuracion/configuracion.module').then( m => m.ConfiguracionPageModule)
+  },
+  {
+    path: 'black',
+    loadChildren: () => import('./black/black.module').then( m => m.BlackPageModule)
   },
 
 
