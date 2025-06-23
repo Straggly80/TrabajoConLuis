@@ -1,61 +1,112 @@
 <ion-content [fullscreen]="true" class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title>Mi Perfil</ion-title>
+      <ion-title><h1 class="letras" style="text-align: center; font-weight: bold;">Mi Perfil</h1></ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div class="perfil-container">
+
     <!-- Parte superior: Datos de usuario -->
     <div class="perfil-superior">
-      <ion-card class="perfil-card">
-        <ion-card-content class="ion-text-center">
           <ion-avatar class="perfil-avatar">
             <img src="https://www.gravatar.com/avatar?d=mp" />
           </ion-avatar>
-          <h2>Sebastián Flores</h2>
-          <p>Miembro desde: <strong>Junio 2025</strong></p>
-        </ion-card-content>
-      </ion-card>
+          <h2 style="text-align: center;" class="letras">Sebastián Flores</h2>
+          <p style="text-align: center;" class="letras">Miembro desde: 123<!-- {{$perfil}} --></p>
     </div>
 
     <!-- Parte inferior: Publicaciones -->
-    <div class="perfil-inferior">
-      <h2 class="ion-text-center">MIS PUBLICACIONES</h2>
       <br>
+
       <ion-list>
-        <ion-item>
+        <!-- 1er Publicacion -->
+        <ion-item class="letras">
           <ion-thumbnail slot="start">
-            <img src="https://ionicframework.com/docs/img/demos/card-media.png" />
+            <img class="img-pub" src="https://ionicframework.com/docs/img/demos/card-media.png" />
           </ion-thumbnail>
-          <ion-label>
-            <h3>Tenis Nike</h3>
-            <p>Publicado el <strong>5 de junio</strong></p>
+          <ion-label class="letras">
+            <h2>Tenis Nike
+            <p>Publicado el <!-- AQUI IRA EL {{PARA LA KEY}} <strong>25 de agosto</strong> --></p></h2>
           </ion-label>
         </ion-item>
 
-        <ion-item>
+        <!-- 2da publicacion -->
+        <ion-item class="letras">
           <ion-thumbnail slot="start">
-            <img src="https://ionicframework.com/docs/img/demos/card-media.png" />
+            <img class="img-pub" src="https://ionicframework.com/docs/img/demos/card-media.png" />
           </ion-thumbnail>
-          <ion-label>
-            <h3>Sueter Wilson</h3>
-            <p>Publicado el <strong>2 de junio</strong></p>
+          <ion-label class="letras">
+            <h2>Sueter Wilson
+            <p>Publicado el 25 marzo <!-- AQUI IRA EL {{PARA LA KEY}} <strong>2 de junio</strong> --></p></h2>
           </ion-label>
         </ion-item>
+
+        <!-- 3ra publicacion -->
+        <ion-item class="letras">
+          <ion-thumbnail slot="start">
+            <img class="img-pub" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+          </ion-thumbnail>
+          <ion-label class="letras">
+            <h2>Sueter Wilson
+            <p>Publicado el 25 marzo <!-- AQUI IRA EL {{PARA LA KEY}} <strong>2 de junio</strong> --></p></h2>
+          </ion-label>
+        </ion-item>
+
+        <!-- 4ta publicacion -->
+        <ion-item class="letras">
+          <ion-thumbnail slot="start">
+            <img class="img-pub" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+          </ion-thumbnail>
+          <ion-label class="letras">
+            <h2>Sueter Wilson
+            <p>Publicado el 25 marzo <!-- AQUI IRA EL {{PARA LA KEY}} <strong>2 de junio</strong> --></p></h2>
+          </ion-label>
+        </ion-item>
+
+        <!-- 5ta publicacion -->
+        <ion-item class="letras">
+          <ion-thumbnail slot="start">
+            <img class="img-pub" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+          </ion-thumbnail>
+          <ion-label class="letras">
+            <h2>Sueter Wilson
+            <p>Publicado el 25 marzo <!-- AQUI IRA EL {{PARA LA KEY}} <strong>2 de junio</strong> --></p></h2>
+          </ion-label>
+        </ion-item>
+        <!-- 6ta publicacion -->
+          <ion-item class="letras">
+          <ion-thumbnail slot="start">
+            <img class="img-pub" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+          </ion-thumbnail>
+          <ion-label class="letras">
+            <h2>Sueter Wilson
+            <p>Publicado el 25 marzo <!-- AQUI IRA EL {{PARA LA KEY}} <strong>2 de junio</strong> --></p></h2>
+          </ion-label>
+        </ion-item>
+        <!-- 7ma publicacion -->
+
+          <ion-item class="letras">
+          <ion-thumbnail slot="start">
+            <img class="img-pub" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+          </ion-thumbnail>
+          <ion-label class="letras">
+            <h2>Sueter Wilson
+            <p>Publicado el 25 marzo <!-- AQUI IRA EL {{PARA LA KEY}} <strong>2 de junio</strong> --></p></h2>
+          </ion-label>
+        </ion-item>
+
+        
       </ion-list>
-    </div>
-  </div>
 </ion-content>
 
 
 
 
 
-<!-- Navegación inferior -->
+<!-- Navegación Superior derecho -->
 <div class="bottom-nav">
   <a href="javascript:void(0)" class="home-box" (click)="toggleRightBox()">
-    <ion-icon [name]="showRightBox ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
+    <ion-icon name="menu"></ion-icon>
   </a>
 
   <div class="right-box" [class.hidden]="!showRightBox" [class.visible]="showRightBox">
@@ -69,10 +120,6 @@
       <ion-icon name="settings-outline"></ion-icon>
     </a>
 
-   <!-- Botón logout -->
-    <a href="javascript:void(0)" (click)="backlogout()" role="button" tabindex="0">
-      <ion-icon name="log-out-outline"></ion-icon>
-    </a>
   </div>
 </div>
 

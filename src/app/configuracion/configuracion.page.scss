@@ -1,19 +1,47 @@
 /* ---------- fuente de letras ---------- */
 
 * {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 100;
+  font-family: 'Patrick Hand', cursive;
 }
 
 /* --------------------------------------- */
+.letras{
+  color: #2a2a2a; /* letras blancas */
+  font-weight: 100; /* sin px */
+  font-family: 'Patrick Hand', cursive;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  display: block;
+  width: 100%;
+}
 
+.letters {
+  color: #2a2a2a; /* letras blancas */
+  font-weight: 100; /* sin px */
+  font-family: 'Patrick Hand', cursive;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  display: block;
+  width: 100%;
+  margin-left: 10px;
+}
+.letters2 {
+  color: #2a2a2a; /* letras blancas */
+  font-weight: 100; /* sin px */
+  font-family: 'Patrick Hand', cursive;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  display: block;
+  width: 100%;
+  margin-left: 10px;
 
-
-
-
-
-
-
+}
 
 
 /* ------------------------------------------------------------------- */
@@ -39,29 +67,11 @@ ion-content {
   gap: 12px;
   justify-content: flex-end;
   transition: right 0.3s ease; /* animación suave */
+  color: rgb(0, 0, 0);
 }
-
-/* Botón fijo abajo */
-.crear-boton {
-  background-color: #ffffff;
-  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.25);
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgb(103, 103, 103);
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  z-index: 11;
-}
-
 
 /* Botón fijo */
 .home-box {
-  background-color: #ffffff;
-  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.25);
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -77,17 +87,7 @@ ion-content {
 
 /* Icono dentro del botón home */
 .home-box ion-icon {
-  font-size: 1.9rem;
-  transition: transform 0.3s ease, color 0.4s ease;
-}
-
-.home-box:hover {
-  transform: scale(1.10);
-}
-
-.home-box:hover ion-icon {
-  transform: scale(1.1);
-  color: #619def;
+  font-size: 2.5rem;
 }
 
 /* Contenedor para centrar la caja con 3 iconos */

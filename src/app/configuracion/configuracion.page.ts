@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
+import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Auth } from '@angular/fire/auth';
 import { NavController } from '@ionic/angular';
 
+
 @Component({
   selector: 'app-configuracion',
   standalone: true,
-  imports: [IonicModule],
+  imports: [IonicModule, CommonModule],
   templateUrl: './configuracion.page.html',
   styleUrls: ['./configuracion.page.scss'],
 })
@@ -67,10 +69,15 @@ export class ConfiguracionPage {
     this.navCtrl.back();
   }
 
+   goAcercaDe() {
+    this.cerrarRightBox();
+    this.navCtrl.back();
+  }
+
   backlogout() {
     this.auth.signOut().then(() => {
       this.cerrarRightBox();
-      this.router.navigate(['/login']);
+      this.router.navigate(['']);
     });
   }
 }

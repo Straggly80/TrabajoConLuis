@@ -103,22 +103,12 @@ img, button, ion-button {
   box-sizing: border-box;
 }
 
-/* Ejemplo título escalable */
-.title {
-  font-size: 1.8rem;
-}
 @media (max-width: 480px) {
   .title {
     font-size: 1.4rem;
   }
 }
 
-/* Contenedor centrado para botones */
-.botones-container {
-  width: 90%;
-  max-width: 400px;
-  margin: 0 auto;
-}
 /* -----------------------------FUENTES-------------------------------------- */
 .title-patrick-hand {
   font-family: 'Patrick Hand', cursive;
