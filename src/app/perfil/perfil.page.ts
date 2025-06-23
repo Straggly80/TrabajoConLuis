@@ -4,11 +4,12 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { Auth } from '@angular/fire/auth';
 import { filter } from 'rxjs/operators';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-perfil',
   standalone: true,
-  imports: [IonicModule],
+  imports: [IonicModule, CommonModule],
   templateUrl: './perfil.page.html',
   styleUrls: ['./perfil.page.scss'],
 })
@@ -32,27 +33,12 @@ export class PerfilPage implements OnInit {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: any) => {
-      if (event.url === '/perfil') {
-        this.showRightBox = false;
-        clearTimeout(this.rightBoxTimer);
-      }
     });
   }
 
   toggleRightBox() {
     this.showRightBox = !this.showRightBox;
 
-    // Limpiar temporizador anterior
-    if (this.rightBoxTimer) {
-      clearTimeout(this.rightBoxTimer);
-    }
-
-    // Si se abre, iniciar temporizador
-    if (this.showRightBox) {
-      this.rightBoxTimer = setTimeout(() => {
-        this.showRightBox = false;
-      }, 5000);
-    }
   }
 
   cerrarRightBox() {

@@ -24,18 +24,18 @@
     </a>
 
   <a href="javascript:void(0)" class="home-box" (click)="toggleRightBox()">
-    <ion-icon [name]="showRightBox ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
+    <ion-icon [name]="showRightBox ? 'caret-up' : 'caret-down'"></ion-icon>
   </a>
 
   <div class="right-box" [class.hidden]="!showRightBox" [class.visible]="showRightBox">
-    <a href="javascript:void(0)"><ion-icon name="search-outline"></ion-icon></a>
+    <a href="javascript:void(0)"><ion-icon name="search"></ion-icon></a>
 
     <a href="javascript:void(0)" (click)="goFavoritos()">
-      <ion-icon name="heart-outline"></ion-icon>
+      <ion-icon name="heart"></ion-icon>
     </a>
 
     <a href="javascript:void(0)" (click)="goPerfil()" role="button" tabindex="0">
-      <ion-icon name="person-outline"></ion-icon>
+      <ion-icon name="person"></ion-icon>
     </a>
 
   </div>

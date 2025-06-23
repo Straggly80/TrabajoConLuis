@@ -1,9 +1,10 @@
 <ion-content [fullscreen]="true" class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title><h1 class="letras" style="text-align: center; font-weight: bold;">Mi Perfil</h1></ion-title>
+      <ion-title><h1 class="letras" style="text-align: center; font-weight: bold;"></h1></ion-title>
     </ion-toolbar>
   </ion-header>
+  <br>
 
 
     <!-- Parte superior: Datos de usuario -->
@@ -106,18 +107,18 @@
 <!-- Navegación Superior derecho -->
 <div class="bottom-nav">
   <a href="javascript:void(0)" class="home-box" (click)="toggleRightBox()">
-    <ion-icon name="menu"></ion-icon>
+    <ion-icon name="menu" class="menu-icon" [ngClass]="{'rotated': showRightBox}"></ion-icon>
   </a>
 
   <div class="right-box" [class.hidden]="!showRightBox" [class.visible]="showRightBox">
     <a href="javascript:void(0)" (click)="goHome()"><ion-icon name="home"></ion-icon></a>
 
     <a href="javascript:void(0)" (click)="goFavoritos()">
-      <ion-icon name="heart-outline"></ion-icon>
+      <ion-icon name="heart"></ion-icon>
     </a>
 
     <a href="javascript:void(0)" (click)="goConfiguracion()">
-      <ion-icon name="settings-outline"></ion-icon>
+      <ion-icon name="settings"></ion-icon>
     </a>
 
   </div>

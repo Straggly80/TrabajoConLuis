@@ -1,0 +1,205 @@
+.preview-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.preview-image-wrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.preview-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.remove-button {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #f44336;
+  border: none;
+  color: white;
+  font-size: 14px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+
+/* ---------- fuente de letras ---------- */
+
+* {
+  font-family: 'Patrick Hand', cursive;
+}
+
+/* --------------------------------------- */
+.letras{
+  color: #2a2a2a; /* letras blancas */
+  font-weight: 100; /* sin px */
+  font-family: 'Patrick Hand', cursive;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  display: block;
+  width: 100%;
+}
+
+.letters {
+  color: #2a2a2a; /* letras blancas */
+  font-weight: 100; /* sin px */
+  font-family: 'Patrick Hand', cursive;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  display: block;
+  width: 100%;
+  margin-left: 10px;
+}
+.letters2 {
+  color: #2a2a2a; /* letras blancas */
+  font-weight: 100; /* sin px */
+  font-family: 'Patrick Hand', cursive;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  display: block;
+  width: 100%;
+  margin-left: 10px;
+
+}
+
+
+/* ------------------------------------------------------------------- */
+      //NAV BAR DE ABAJO
+/* ------------------------------------------------------------------- */
+ion-content {
+   --background: #ffffff; /* o el color que tú quieras para el fondo de toda la pantalla */
+  background-color: #ffffff;
+  --padding-bottom: 150px;
+  height: 100%;
+  overflow: hidden;
+}
+
+
+/* nav fijo con posición visual simulada */
+.bottom-nav {
+  position: fixed;
+  top: 16px;
+  right: 15px; /* valor oculto por defecto */
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: flex-end;
+  transition: right 0.3s ease; /* animación suave */
+  color: rgb(0, 0, 0);
+}
+
+/* Botón fijo */
+.home-box {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(103, 103, 103);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 11;
+}
+
+
+/* Icono dentro del botón home */
+.home-box ion-icon {
+  font-size: 2.5rem;
+}
+
+/* Contenedor para centrar la caja con 3 iconos */
+.right-box-container {
+  flex: 1; /* ocupa todo el espacio restante */
+  display: flex;
+  justify-content: center; /* centra horizontalmente el contenido */
+}
+
+/* Menú justo debajo */
+.right-box {
+  position: absolute;
+  top: 70px; /* debajo del botón */
+  right: 0;
+  background-color: #ffffff;
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column; /* <-- aquí está el cambio clave */
+  gap: 12px; /* espacio vertical entre íconos */
+  align-items: center;
+  box-sizing: border-box;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform-origin: top right;
+  z-index: 9;
+}
+
+/* Iconos individuales */
+.right-box a {
+  background-color: #ffffff;
+  border-radius: 50%;
+  width: 32px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(103, 103, 103);
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.right-box a ion-icon {
+  font-size: 1.9rem;
+  transition: transform 0.3s ease, color 0.4s ease;
+}
+
+/* Hover: borde negro y escala suave */
+.right-box a:hover {
+  transform: scale(1.12);
+  color: #ef6161;
+}
+
+.home-box ion-icon,
+.right-box a ion-icon {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Oculto: sube hacia arriba */
+.right-box.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-20px); /* se oculta hacia arriba */
+}
+
+/* Visible: aparece debajo */
+.right-box.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}

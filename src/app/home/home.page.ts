@@ -55,17 +55,6 @@ export class HomePage implements OnInit, AfterViewInit {
     // Invertir estado
     this.showRightBox = !this.showRightBox;
 
-    // Limpiar temporizador anterior
-    if (this.rightBoxTimer) {
-      clearTimeout(this.rightBoxTimer);
-    }
-
-    // Si se abrió, iniciar temporizador de autocierre
-    if (this.showRightBox) {
-      this.rightBoxTimer = setTimeout(() => {
-        this.showRightBox = false;
-      }, 5000);
-    }
   }
 
   cerrarRightBox() {

@@ -1,7 +1,68 @@
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Crear</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Nueva publicación</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <div class="ion-margin-bottom">
+        <ion-label>Nombre del producto</ion-label>
+        <ion-input placeholder=""></ion-input>
+      </div>
+
+      <div class="ion-margin-bottom">
+        <ion-label>Precio</ion-label>
+        <ion-input type="number" placeholder=""></ion-input>
+      </div>
+
+      <div class="ion-margin-bottom">
+        <ion-label>Descripción</ion-label>
+        <ion-textarea placeholder=""></ion-textarea>
+      </div>
+
+      <div class="ion-margin-bottom">
+        <ion-label>Seleccionar imágenes</ion-label>
+        <input type="file" (change)="onImagesSelected($event)" accept="image/*" multiple />
+      </div>
+
+      <div class="preview-container">
+        <div class="preview-image-wrapper" *ngFor="let img of imagePreviews; let i = index">
+          <img [src]="img" alt="Vista previa" class="preview-image" />
+          <button type="button" class="remove-button" (click)="removeImage(i)">✕</button>
+        </div>
+      </div>
+
+
+
+      <div class="ion-margin-bottom">
+        <ion-label>Categoría</ion-label>
+        <ion-select placeholder="Seleccionar una categoría">
+          <ion-select-option value="ropa">Ropa</ion-select-option>
+          <ion-select-option value="zapatos">Zapatos</ion-select-option>
+          <ion-select-option value="electronica">Electrónica</ion-select-option>
+          <ion-select-option value="otros">Otros</ion-select-option>
+        </ion-select>
+      </div>
+
+      <ion-button expand="block" color="primary" class="ion-margin-top">
+        Publicar
+      </ion-button>
+
+    </ion-card-content>
+  </ion-card>
 </ion-content>
+
+<!-- Navegación superior -->
+<div class="bottom-nav">
+
+    <a href="javascript:void(0)" class="home-box" (click)="goBack()" role="button" tabindex="0">
+      <ion-icon name="arrow-back"></ion-icon>
+    </a>
+</div>

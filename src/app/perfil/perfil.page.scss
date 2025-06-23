@@ -65,7 +65,7 @@
   height: 100%;
   object-fit: cover;
   border-radius: 15px;
-  box-shadow: 5px 0px 10px rgb(0, 0, 0);
+  box-shadow: 4px 2px 5px rgb(119, 119, 119);
 }
 
 
@@ -190,4 +190,12 @@ ion-content {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
+}
+
+.menu-icon {
+  transition: transform 0.3s ease;
+}
+
+.menu-icon.rotated {
+  transform: rotate(90deg);
 }
