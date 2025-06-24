@@ -1,5 +1,12 @@
 <ion-content style="--ion-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;">
+  <h1 style="font-family:'Nexa';font-weight: 700;">REGISTRO</h1>
   <form (submit)="register(); $event.preventDefault()">
+    
+    <ion-item>
+      <ion-label position="floating">Usuario</ion-label>
+      <ion-input [(ngModel)]="usuario" name="usuario" type="usuario" required></ion-input>
+    </ion-item>
+
     <ion-item>
       <ion-label position="floating">Correo electrónico</ion-label>
       <ion-input [(ngModel)]="email" name="email" type="email" required></ion-input>
@@ -10,7 +17,12 @@
       <ion-input [(ngModel)]="password" name="password" type="password" required></ion-input>
     </ion-item>
 
-    <ion-button expand="block" type="submit" class="animated-button">Registrarse</ion-button>
+    <ion-item>
+      <ion-label position="floating">Numero de teléfono</ion-label>
+      <ion-input [(ngModel)]="numeroDeTelefono" name="numeroDeTelefono" type="number" required></ion-input>
+    </ion-item>
+
+    <ion-button id="regBtn" expand="block" type="submit" class="animated-button">Registrarse</ion-button>
     <ion-button id="register-button" expand="block"(click)="goWelcome()">Inicio</ion-button>
   </form>
 

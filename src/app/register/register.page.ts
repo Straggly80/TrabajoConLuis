@@ -23,6 +23,8 @@ import { FormsModule } from '@angular/forms';
   ]
 })
 export class RegisterPage implements OnInit {
+  numeroDeTelefono: string = '';
+  usuario: string = '';
   email: string = '';
   password: string = '';
   userForVerification: User | null = null;
