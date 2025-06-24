@@ -71,7 +71,7 @@ export class ConfiguracionPage {
 
    goAcercaDe() {
     this.cerrarRightBox();
-    this.navCtrl.back();
+    this.router.navigate(['/darkmode']);
   }
 
   backlogout() {
