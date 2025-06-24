@@ -50,11 +50,6 @@ const routes: Routes = [
     path: 'configuracion',
     loadChildren: () => import('./configuracion/configuracion.module').then( m => m.ConfiguracionPageModule)
   },
-  {
-    path: 'black',
-    loadChildren: () => import('./black/black.module').then( m => m.BlackPageModule)
-  },
-
 
 ];
 

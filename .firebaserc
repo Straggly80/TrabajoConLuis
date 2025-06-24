@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "appmarketplace-716cc"
-  }
+    "default": "geohub-origin77",
+    "GeoHubi": "geohub-origin77"
+  },
+  "targets": {},
+  "etags": {}
 }
