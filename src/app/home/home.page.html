@@ -19,24 +19,17 @@
 <div class="bottom-nav">
  
     <!-- Botón para ir a la página de crear publicaciones -->
-    <a href="javascript:void(0)" class="crear-boton" (click)="goCrear()">
-      <ion-icon name="add-circle-outline"></ion-icon>
-    </a>
+    <a href="javascript:void(0)" class="crear-boton" (click)="goCrear()"><ion-icon name="add-circle-outline"></ion-icon></a>
 
-  <a href="javascript:void(0)" class="home-box" (click)="toggleRightBox()">
-    <ion-icon [name]="showRightBox ? 'caret-up' : 'caret-down'"></ion-icon>
-  </a>
+  <a href="javascript:void(0)" class="home-box" (click)="toggleRightBox()"><ion-icon [name]="showRightBox ? 'caret-up' : 'caret-down'"></ion-icon></a>
 
   <div class="right-box" [class.hidden]="!showRightBox" [class.visible]="showRightBox">
+
     <a href="javascript:void(0)"><ion-icon name="search"></ion-icon></a>
 
-    <a href="javascript:void(0)" (click)="goFavoritos()">
-      <ion-icon name="heart"></ion-icon>
-    </a>
+    <a href="javascript:void(0)" (click)="goFavoritos()"><ion-icon name="heart"></ion-icon></a>
 
-    <a href="javascript:void(0)" (click)="goPerfil()" role="button" tabindex="0">
-      <ion-icon name="person"></ion-icon>
-    </a>
+    <a href="javascript:void(0)" (click)="goPerfil()" role="button" tabindex="0"><ion-icon name="person"></ion-icon></a>
 
   </div>
 </div>

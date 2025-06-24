@@ -28,14 +28,12 @@
 }
 /* -----------------IMG DE ABAJO TIPO PINTEREST---------------------------------- */
 
-.perfil-img {
-  background-color: #e25f5f;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 15px;
-  box-shadow: 4px 2px 5px rgb(119, 119, 119);
+.perfil-imagenes{
+  height: 44px;
+  width: 44px;
 }
+
+
 
 .perfil-card{
   position: relative;
@@ -64,6 +62,7 @@ ion-content {
   overflow: hidden;
   --overflow: hidden; // <-- ¡este es crucial!
   --padding-bottom: 0;
+  font-size: 2.5rem;
 }
 
 /* nav fijo con posición visual simulada */
