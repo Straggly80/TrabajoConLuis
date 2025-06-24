@@ -8,8 +8,8 @@
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Correo electrónico</ion-label>
-      <ion-input [(ngModel)]="email" name="email" type="email" required></ion-input>
+      <ion-label position="floating">Correo electrónico o numero de telefono</ion-label>
+      <ion-input [(ngModel)]="email" name="email" type="email : number" required></ion-input>
     </ion-item>
 
     <ion-item>
@@ -17,10 +17,10 @@
       <ion-input [(ngModel)]="password" name="password" type="password" required></ion-input>
     </ion-item>
 
-    <ion-item>
+    <!-- <ion-item>
       <ion-label position="floating">Numero de teléfono</ion-label>
       <ion-input [(ngModel)]="numeroDeTelefono" name="numeroDeTelefono" type="number" required></ion-input>
-    </ion-item>
+    </ion-item> -->
 
     <ion-button id="regBtn" expand="block" type="submit" class="animated-button">Registrarse</ion-button>
     <ion-button id="register-button" expand="block"(click)="goWelcome()">Inicio</ion-button>
