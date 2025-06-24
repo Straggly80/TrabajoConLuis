@@ -134,5 +134,11 @@ export class RegisterPage implements OnInit {
   }
   goWelcome() {
     this.router.navigate(['']);
-}
+  }
+
+  isEmailOrPhone(input: string): boolean {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^[0-9]{10,15}$/;
+    return emailRegex.test(input) || phoneRegex.test(input);
+  }
 };
