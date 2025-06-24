@@ -145,7 +145,7 @@ export class HomePage implements OnInit, AfterViewInit {
         );
       } else {
         console.warn('Geolocation is not supported by this browser.');
-        resolve({ lat: 19.4326, lng: -99.1332 });
+        resolve({ lat: 20.4326, lng: -59.1332 });
       }
     });
   }
@@ -162,12 +162,12 @@ export class HomePage implements OnInit, AfterViewInit {
       clickableIcons: false,
       mapTypeId: 'roadmap',
       styles: [
-        { featureType: 'poi', elementType: 'all', stylers: [{ visibility: 'off' }] },
-        { featureType: 'transit', elementType: 'all', stylers: [{ visibility: 'off' }] },
-        { featureType: 'road', elementType: 'geometry', stylers: [{ visibility: 'simplified' }] },
-        { featureType: 'road', elementType: 'labels.icon', stylers: [{ visibility: 'off' }] },
-        { featureType: 'administrative', elementType: 'labels', stylers: [{ visibility: 'off' }] },
-        { featureType: 'water', elementType: 'labels', stylers: [{ visibility: 'off' }] }
+        { featureType: 'poi', elementType: 'all', stylers: [{ visibility: 'on' }] },
+        { featureType: 'transit', elementType: 'all', stylers: [{ visibility: 'on' }] },
+        { featureType: 'road', elementType: 'geometry', stylers: [{ visibility: 'on' }] },
+        { featureType: 'road', elementType: 'labels.icon', stylers: [{ visibility: 'on'}] },
+        { featureType: 'administrative', elementType: 'labels', stylers: [{ visibility: 'on' }] },
+        { featureType: 'water', elementType: 'labels', stylers: [{ visibility: 'on' }] }
       ]
     });
 
