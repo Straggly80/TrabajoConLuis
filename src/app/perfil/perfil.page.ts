@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { Auth } from '@angular/fire/auth';
 import { filter } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
 
 
 @Component({

@@ -6,6 +6,7 @@ import { FavoritesService, ProductoFavorito } from '../services/favorites.servic
 import { Auth } from '@angular/fire/auth';
 import { filter } from 'rxjs/operators';
 
+
 declare const google: any;
 
 @Component({
@@ -154,6 +155,9 @@ export class HomePage implements OnInit, AfterViewInit {
     const userLocation = await this.getCurrentLocation();
     const mapDiv = document.getElementById('map');
     if (!mapDiv) return;
+
+
+    // Inicializar el mapa  
 
     const map = new google.maps.Map(mapDiv, {
       center: userLocation,

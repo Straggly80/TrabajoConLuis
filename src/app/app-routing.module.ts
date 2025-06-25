@@ -51,6 +51,8 @@ const routes: Routes = [
     loadChildren: () => import('./configuracion/configuracion.module').then( m => m.ConfiguracionPageModule)
   },
 
+
+
 ];
 
 @NgModule({
