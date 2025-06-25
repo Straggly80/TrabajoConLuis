@@ -8,9 +8,14 @@
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Correo electrónico o numero de telefono</ion-label>
-      <ion-input [(ngModel)]="email" name="email" type="text" required></ion-input>
+      <ion-label position="floating">Correo electrónico o número de teléfono</ion-label>
+      <ion-input [(ngModel)]="emailOrPhone" name="emailOrPhone" type="text" required></ion-input>
     </ion-item>
+
+
+    <!-- Este div invisible es requerido por Firebase para SMS -->
+    <div id="recaptcha-container"></div>
+
 
     <ion-item>
       <ion-label position="floating">Contraseña</ion-label>

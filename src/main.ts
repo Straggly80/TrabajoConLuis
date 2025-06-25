@@ -5,6 +5,8 @@ import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 import { IonicModule } from '@ionic/angular';
 import { environment } from './environments/environment';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+
 
 // Firebase
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
@@ -24,6 +26,7 @@ bootstrapApplication(AppComponent, {
     ),
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()), // <--- Aquí el proveedor de Firestore
     provideAnimations()
   ]
 }).then(() => {

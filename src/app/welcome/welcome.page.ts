@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
@@ -7,10 +7,9 @@ import { IonicModule } from '@ionic/angular';
   templateUrl: './welcome.page.html',
   styleUrls: ['./welcome.page.scss'],
   standalone: true,
-  imports: [IonicModule]
+  imports: [IonicModule, RouterModule],
 })
 export class WelcomePage {
-
   constructor(private router: Router) {}
 
   goLogin() {
@@ -37,5 +36,4 @@ export class WelcomePage {
   loginWithGithub() {
     console.log('Iniciar sesión con GitHub (pendiente)');
   }
-
 }
