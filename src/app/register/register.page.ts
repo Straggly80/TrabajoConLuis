@@ -4,16 +4,8 @@ import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
   onAuthStateChanged,
-  User,
-  signInWithPhoneNumber,
-  RecaptchaVerifier
+  User
 } from '@angular/fire/auth';
-import {
-  Firestore,
-  doc,
-  setDoc,
-  Timestamp
-} from '@angular/fire/firestore'; // AÑADIDO Timestamp
 import { Router } from '@angular/router';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { IonicModule, ToastController } from '@ionic/angular';
@@ -36,8 +28,7 @@ import { FormsModule } from '@angular/forms';
   ]
 })
 export class RegisterPage implements OnInit {
-  usuario = '';
-  emailOrPhone = '';
+  email = '';
   password = '';
   showVerificationMessage = false;
   hasAttemptedRegister = false;
@@ -45,12 +36,8 @@ export class RegisterPage implements OnInit {
   emailVerified = false;
   userForVerification: User | null = null;
 
-  recaptchaVerifier!: RecaptchaVerifier;
-  confirmationResult: any;
-
   constructor(
     private auth: Auth,
-    private firestore: Firestore,
     private router: Router,
     private toastController: ToastController
   ) {}
@@ -60,24 +47,11 @@ export class RegisterPage implements OnInit {
       this.userForVerification = user;
       this.emailVerified = !!user?.emailVerified;
     });
-
-    this.recaptchaVerifier = new RecaptchaVerifier(
-      this.auth,
-      'recaptcha-container',
-      {
-        size: 'invisible'
-      }
-    );
   }
 
   isEmail(input: string): boolean {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(input);
-  }
-
-  isPhone(input: string): boolean {
-    const phoneRegex = /^[0-9]{10,15}$/;
-    return phoneRegex.test(input);
   }
 
   async presentToast(message: string, color: string = 'primary') {
@@ -91,70 +65,33 @@ export class RegisterPage implements OnInit {
   }
 
   async register() {
-    if (!this.isEmail(this.emailOrPhone) && !this.isPhone(this.emailOrPhone)) {
-      this.presentToast('Ingresa un correo válido o número de teléfono.', 'warning');
+    if (!this.isEmail(this.email)) {
+      this.presentToast('Ingresa un correo válido.', 'warning');
       return;
     }
 
-    if (!this.usuario || this.usuario.trim() === '') {
-      this.presentToast('El campo "usuario" es obligatorio.', 'warning');
+    if (this.password.length < 6) {
+      this.presentToast('La contraseña debe tener al menos 6 caracteres.', 'warning');
       return;
     }
 
-    if (this.isEmail(this.emailOrPhone)) {
-      // REGISTRO CON CORREO
-      if (this.password.length < 6) {
-        this.presentToast('La contraseña debe tener al menos 6 caracteres.', 'warning');
-        return;
-      }
+    try {
+      const userCredential = await createUserWithEmailAndPassword(this.auth, this.email, this.password);
+      await sendEmailVerification(userCredential.user);
 
-      try {
-        const userCredential = await createUserWithEmailAndPassword(this.auth, this.emailOrPhone, this.password);
-        await sendEmailVerification(userCredential.user);
+      this.userForVerification = userCredential.user;
+      this.showVerificationMessage = true;
+      this.hasAttemptedRegister = true;
+      this.emailVerified = false;
 
-        await setDoc(doc(this.firestore, 'users', userCredential.user.uid), {
-          uid: userCredential.user.uid,
-          email: userCredential.user.email,
-          usuario: this.usuario,
-          createdAt: Timestamp.now() // CORREGIDO
-        });
+      // Limpiar inputs
+      this.email = '';
+      this.password = '';
 
-        this.userForVerification = userCredential.user;
-        this.showVerificationMessage = true;
-        this.hasAttemptedRegister = true;
-        this.emailVerified = false;
-
-        this.emailOrPhone = '';
-        this.password = '';
-
-        this.presentToast('¡Registro exitoso! Revisa tu correo para verificar.', 'success');
-      } catch (error: any) {
-        this.presentToast('Error: ' + error.message, 'danger');
-        console.error('Error en registro por correo:', error);
-      }
-    } else {
-      // REGISTRO CON TELÉFONO
-      try {
-        this.confirmationResult = await signInWithPhoneNumber(this.auth, this.emailOrPhone, this.recaptchaVerifier);
-        const code = prompt('Ingresa el código que recibiste por SMS:');
-        if (code) {
-          const result = await this.confirmationResult.confirm(code);
-          const user = result.user;
-
-          await setDoc(doc(this.firestore, 'users', user.uid), {
-            uid: user.uid,
-            phoneNumber: user.phoneNumber,
-            usuario: this.usuario,
-            createdAt: Timestamp.now() // CORREGIDO
-          });
-
-          this.presentToast('¡Número verificado y registro exitoso!', 'success');
-          this.router.navigate(['/login']);
-        }
-      } catch (error: any) {
-        this.presentToast('Error con número de teléfono: ' + error.message, 'danger');
-        console.error('Error en registro con teléfono:', error);
-      }
+      this.presentToast('¡Registro exitoso! Revisa tu correo para verificar.', 'success');
+    } catch (error: any) {
+      this.presentToast('Error: ' + error.message, 'danger');
+      console.error('Error en registro:', error);
     }
   }
 
