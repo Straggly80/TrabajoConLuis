@@ -11,8 +11,9 @@ import {
 import {
   Firestore,
   doc,
-  setDoc
-} from '@angular/fire/firestore';
+  setDoc,
+  Timestamp
+} from '@angular/fire/firestore'; // AÑADIDO Timestamp
 import { Router } from '@angular/router';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { IonicModule, ToastController } from '@ionic/angular';
@@ -60,7 +61,6 @@ export class RegisterPage implements OnInit {
       this.emailVerified = !!user?.emailVerified;
     });
 
-    // Inicializa reCAPTCHA invisible para teléfono
     this.recaptchaVerifier = new RecaptchaVerifier(
       this.auth,
       'recaptcha-container',
@@ -96,6 +96,11 @@ export class RegisterPage implements OnInit {
       return;
     }
 
+    if (!this.usuario || this.usuario.trim() === '') {
+      this.presentToast('El campo "usuario" es obligatorio.', 'warning');
+      return;
+    }
+
     if (this.isEmail(this.emailOrPhone)) {
       // REGISTRO CON CORREO
       if (this.password.length < 6) {
@@ -111,7 +116,7 @@ export class RegisterPage implements OnInit {
           uid: userCredential.user.uid,
           email: userCredential.user.email,
           usuario: this.usuario,
-          createdAt: new Date()
+          createdAt: Timestamp.now() // CORREGIDO
         });
 
         this.userForVerification = userCredential.user;
@@ -125,6 +130,7 @@ export class RegisterPage implements OnInit {
         this.presentToast('¡Registro exitoso! Revisa tu correo para verificar.', 'success');
       } catch (error: any) {
         this.presentToast('Error: ' + error.message, 'danger');
+        console.error('Error en registro por correo:', error);
       }
     } else {
       // REGISTRO CON TELÉFONO
@@ -139,7 +145,7 @@ export class RegisterPage implements OnInit {
             uid: user.uid,
             phoneNumber: user.phoneNumber,
             usuario: this.usuario,
-            createdAt: new Date()
+            createdAt: Timestamp.now() // CORREGIDO
           });
 
           this.presentToast('¡Número verificado y registro exitoso!', 'success');
@@ -147,6 +153,7 @@ export class RegisterPage implements OnInit {
         }
       } catch (error: any) {
         this.presentToast('Error con número de teléfono: ' + error.message, 'danger');
+        console.error('Error en registro con teléfono:', error);
       }
     }
   }
