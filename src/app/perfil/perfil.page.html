@@ -1,50 +1,54 @@
-  <ion-header collapse="condense">
-    <ion-title size="large" class="letras">Perfil</ion-title>
-  </ion-header>
+<ion-header collapse="condense">
+  <ion-title size="large" class="letras">Perfil</ion-title>
+</ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
 
+  <!-- Parte superior: Datos de usuario -->
+  <div class="perfil-superior">
+    <ion-avatar class="perfil-avatar">
+      <img src="https://www.gravatar.com/avatar?d=mp" />
+    </ion-avatar>
 
-<!-- Parte superior: Datos de usuario -->
-    <div class="perfil-superior">
-      <ion-avatar class="perfil-avatar">
-            <img src="https://www.gravatar.com/avatar?d=mp" />
-          </ion-avatar>
-          <h2 style="text-align: center;" class="letras">Sebastián Flores</h2>
-       <p style="text-align: center;" class="letras">Miembro desde: 123<!-- {{$perfil}} --></p>
+    <!-- Mostrar o editar nombre de usuario -->
+    <div *ngIf="!modoEdicion">
+      <h2 style="text-align: center;" class="letras">{{ username || 'Usuario' }}</h2>
+      <ion-button size="small" (click)="modoEdicion = true; usernameTemp = username">Editar nombre</ion-button>
     </div>
 
-<!-- En esta parte se usara para poner imagenes solamente de publicacione
-creada, y sera como tipo pinterest y cuando le pique a la img, se abrira un card
-para que te muestre mas detalles acerca de la publicacion -->
+    <div *ngIf="modoEdicion">
+      <ion-item lines="none">
+        <ion-label position="floating">Nuevo nombre de usuario</ion-label>
+        <ion-input [(ngModel)]="usernameTemp"></ion-input>
+      </ion-item>
+      <ion-button size="small" color="success" (click)="guardarUsername()">Guardar</ion-button>
+      <ion-button size="small" color="medium" (click)="cancelarEdicion()">Cancelar</ion-button>
+    </div>
+  </div>
 
-      <ion-card class="perfil-card">
-        <ion-card-content>
-          <div class="perfil-imagenes">
-            <img src="assets/hogar.svg" alt="Publicación 1">
-            <img src="assets/hogar.svg" alt="Publicación 2">
-            <img src="assets/hogar.svg" alt="Publicación 3">
-            <img src="assets/hogar.svg" alt="Publicación 4">
-          </div>
-        </ion-card-content>
-      </ion-card>
+  <!-- Publicaciones tipo Pinterest -->
+  <ion-card class="perfil-card">
+    <ion-card-content>
+      <div class="perfil-imagenes">
+        <img src="assets/hogar.svg" alt="Publicación 1">
+        <img src="assets/hogar.svg" alt="Publicación 2">
+        <img src="assets/hogar.svg" alt="Publicación 3">
+        <img src="assets/hogar.svg" alt="Publicación 4">
+      </div>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
 
-<!-- Navegación Superior derecho -->
+<!-- Navegación superior derecha -->
 <div class="bottom-nav">
-
-    <a href="javascript:void(0)" class="home-box" (click)="toggleRightBox()"><ion-icon name="menu" class="menu-icon" [ngClass]="{'rotated': showRightBox}"></ion-icon></a>
+  <a href="javascript:void(0)" class="home-box" (click)="toggleRightBox()">
+    <ion-icon name="menu" class="menu-icon" [ngClass]="{'rotated': showRightBox}"></ion-icon>
+  </a>
 
   <div class="right-box" [class.hidden]="!showRightBox" [class.visible]="showRightBox">
-
     <a href="javascript:void(0)" (click)="goHome()"><ion-icon name="home"></ion-icon></a>
-
     <a href="javascript:void(0)" (click)="goFavoritos()"><ion-icon name="heart"></ion-icon></a>
-
     <a href="javascript:void(0)" (click)="goConfiguracion()"><ion-icon name="settings"></ion-icon></a>
-
   </div>
 </div>
-
-   
