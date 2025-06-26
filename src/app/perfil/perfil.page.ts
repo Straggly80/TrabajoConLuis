@@ -8,6 +8,7 @@ import { Firestore, doc, getDoc, setDoc, Timestamp } from '@angular/fire/firesto
 import { FormsModule } from '@angular/forms';
 import { AuthStateService } from '../services/auth-state.service'; // Asegúrate de importar esto
 
+
 @Component({
   selector: 'app-perfil',
   standalone: true,
@@ -34,19 +35,22 @@ export class PerfilPage implements OnInit {
   ) {}
 
   async ngOnInit() {
-    const user = this.authState.getCurrentUser();
-    if (!user) {
-      console.warn('Usuario no autenticado');
-      this.router.navigate(['/login']);
-      return;
-    }
+  this.authState.getUser().subscribe(async (user) => {
+  if (!user) {
+    console.warn('Usuario no autenticado');
+    this.router.navigate(['/login']);
+    return;
+  }
 
-    this.uid = user.uid;
-    const ref = doc(this.firestore, 'users', this.uid);
+  this.uid = user.uid;
+  const ref = doc(this.firestore, `users/${this.uid}`);
+  
+  try {
     const snap = await getDoc(ref);
 
     if (snap.exists()) {
-      this.username = snap.data()['username'] || '';
+      const data = snap.data();
+      this.username = data['username'] || '';
       this.usernameTemp = this.username;
     } else {
       await setDoc(ref, {
@@ -55,16 +59,19 @@ export class PerfilPage implements OnInit {
         username: '',
         createdAt: Timestamp.now()
       });
-      console.log('✅ Documento creado en Firestore para:', this.uid);
-      this.username = '';
-      this.usernameTemp = '';
     }
-
-    // Escucha navegación para efectos visuales (opcional)
-    this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe();
+  } catch (err) {
+    console.error('Error al acceder a Firestore:', err);
   }
+});
+
+
+  // Opcional: para mantener compatibilidad con efectos de navegación
+  this.router.events
+    .pipe(filter((event) => event instanceof NavigationEnd))
+    .subscribe();
+}
+
 
   async guardarUsername() {
     if (!this.uid) return;
